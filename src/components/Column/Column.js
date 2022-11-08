@@ -1,14 +1,17 @@
 import styles from "./Column.module.scss";
+import Card from "../Card/Card";
+import CardForm from "../CardForm/CardForm";
 
 const Column = (props) => {
+//const addToCard = () => {props.addCard()};
   return (
     <article className={styles.column}>
       <h2 className={styles.title}>{props.title}</h2>
       <span className={styles.icon + " fa fa-" + props.icon} />
       <ul className={styles.cards}>
-	{props.cards.map(card => <Card key={card.id} title={card.title} />)}
+      {props.cards && props.cards.length && props.cards.map(card => <Card key={card.id} title={card.title} />)}
 </ul>
-<CardForm action={addCart} />
+<CardForm columnId={props.id} action={props.action} />
     </article>
   );
 
