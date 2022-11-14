@@ -6,10 +6,10 @@ const Column = (props) => {
 //const addToCard = () => {props.addCard()};
   return (
     <article className={styles.column}>
-      <h2 className={styles.title}>{props.title}</h2>
-      <span className={styles.icon + " fa fa-" + props.icon} />
+      <h2 className={styles.title}><span className={styles.icon + " fa fa-" + props.icon} />{props.title}</h2>
+      
       <ul className={styles.cards}>
-      {props.cards && props.cards.length && props.cards.map(card => <Card key={card.id} title={card.title} />)}
+      {props.cards.map(card => <Card key={card.id} title={card.title} />)}
 </ul>
 <CardForm columnId={props.id} action={props.action} />
     </article>

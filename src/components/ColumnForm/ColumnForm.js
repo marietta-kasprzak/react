@@ -1,14 +1,12 @@
 import styles from "./ColumnForm.module.scss";
 import { useState } from "react";
 import Button from "../Button/Button";
+import TextInput from "../TextInput/TextInput";
 
 const ColumnForm = (props) => {
   const [title, setTitle] = useState("");
   const [icon, setIcon] = useState("");
 
-  const TextInput = (props) => {
-    return <input className={styles.input} value={props.value} onChange={props.onChange} placeholder={props.placeholder} type="text" />
-};
 
   const handleSubmit = (e) => {
     e.preventDefault();
