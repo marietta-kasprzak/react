@@ -5,9 +5,11 @@ import CardForm from "../CardForm/CardForm";
 
 
 const Column = (props) => {
-  const cards = useSelector (state => state.cards.filter(card=>card.columnId===props.id))
- // const cards = props.cards.filter(card=>card.columnId===props.id)
+  const cards = useSelector(state => state.cards).filter(card => card.columnId === props.id && card.title.toLowerCase().includes(searchString.toLowerCase()));
+
+//const cards = props.cards.filter(card=>card.columnId===props.id)
 //const addToCard = () => {props.addCard()};
+
 
   return (
     <article className={styles.column}>
@@ -16,7 +18,7 @@ const Column = (props) => {
       <ul className={styles.cards}>
       {cards && cards.map(card => <Card key={card.id} title={card.title} />)}
 </ul>
-<CardForm columnId={props.id} action={props.action} />
+<CardForm columnId={props.id} />
     </article>
   );
 

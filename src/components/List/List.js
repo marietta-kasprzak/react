@@ -1,41 +1,11 @@
 import styles from "./List.module.scss";
 import Column from "./../Column/Column";
 import ColumnForm from "./../ColumnForm/ColumnForm";
-import { useState } from "react";
-import shortid from "shortid";
 import { useSelector } from "react-redux";
 
 const List = () => {
 
- const columns2 = useSelector(state => state.columns)
- const [columns, setColumns] = useState(columns2);
-
-  const addColumn = (newColumn) => {
-    setColumns([
-      ...columns,
-      {
-        id: shortid(),
-        title: newColumn.title,
-        icon: newColumn.icon,
-        cards: [],
-      },
-    ]);
-  };
-
-  const addCard = (newCard, columnId) => {
-    const columnsUpdated = columns && columns.map((column) => {
-      if (column.id === columnId)
-        return {
-          ...column,
-          cards: [...column.cards, { id: shortid(), title: newCard.title }],
-        };
-      else return column;
-    });
-
-    setColumns(columnsUpdated);
-  };
-
-  console.log(columns);
+ const columns = useSelector(state => state.columns)
 
   return (
     <div className={styles.list}>
@@ -49,10 +19,10 @@ const List = () => {
       </p>
       <section className={styles.columns}>
         {columns.map((column) => (
-          <Column action={addCard} key={column.id} title={column.title} icon={column.icon} id={column.id}/>
+          <Column key={column.id} title={column.title} icon={column.icon} id={column.id}/>
         ))}
       </section>
-      <ColumnForm action={addColumn} />
+      <ColumnForm />
     </div>
   );
 };
