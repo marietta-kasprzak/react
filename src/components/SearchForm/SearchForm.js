@@ -10,7 +10,8 @@ const SearchForm = (props) => {
     const [searchValue, setSearchValue] = useState(''); // why use state?
     const handleSubmit = (e) => {
       e.preventDefault();
-      dispatch(updateSearchString({ searchValue } ));
+    dispatch(updateSearchString(searchValue));
+    //dispatch ({type:"UPDATE_SEARCH_STRING", payload: searchValue})
     };
     return (
         <form className={styles.searchForm} onSubmit={handleSubmit}>
